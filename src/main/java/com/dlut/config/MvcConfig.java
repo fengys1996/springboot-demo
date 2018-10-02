@@ -1,5 +1,6 @@
 package com.dlut.config;
 
+import com.dlut.interceptor.LoginInterceptor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
@@ -17,7 +18,7 @@ public class MvcConfig implements WebMvcConfigurer
     @Override
     public void addInterceptors(InterceptorRegistry registry)
     {
-        registry.addInterceptor(new HandlerInterceptor()
+        /*registry.addInterceptor(new HandlerInterceptor()
         {
             private final Logger logger = LoggerFactory.getLogger(this.getClass());
             @Override
@@ -39,6 +40,9 @@ public class MvcConfig implements WebMvcConfigurer
             {
                 logger.info("afterHandle method is running");
             }
-        }).addPathPatterns("/**");
+        }).addPathPatterns("/**");*/
+
+        //或者使用下面这种方式进行配置
+        registry.addInterceptor(new LoginInterceptor()).addPathPatterns("/**");
     }
 }
