@@ -43,6 +43,6 @@ public class MvcConfig implements WebMvcConfigurer
         }).addPathPatterns("/**");*/
 
         //或者使用下面这种方式进行配置
-        registry.addInterceptor(new LoginInterceptor()).addPathPatterns("/**");
+        //registry.addInterceptor(new LoginInterceptor()).addPathPatterns("/**");
     }
 }
