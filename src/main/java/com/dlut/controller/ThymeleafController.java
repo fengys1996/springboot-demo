@@ -20,4 +20,12 @@ public class ThymeleafController
         mv.addObject("title","欢迎使用Thymeleaf");
         return mv;
     }
+
+    @RequestMapping(value = "/ws")
+    public ModelAndView ws(ModelAndView mv)
+    {
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        mv.setViewName("/ws");
+        return mv;
+    }
 }
