@@ -18,6 +18,9 @@ public class webSocketConfig extends AbstractWebSocketMessageBrokerConfigurer
     {
         //注册一个stomp协议的节点(endpoint),并指定使用sockjs协议
         registry.addEndpoint("/endpointWisely").withSockJS();
+
+        //用于点对点的聊天室
+        registry.addEndpoint("/endpointChat").withSockJS();
     }
 
     /**
@@ -27,6 +30,7 @@ public class webSocketConfig extends AbstractWebSocketMessageBrokerConfigurer
     public void configureMessageBroker(MessageBrokerRegistry registry)
     {
         //广播室应该配置一个/topic的代理
-        registry.enableSimpleBroker("/topic");
+        //点对点式应增加一个/queue的代理
+        registry.enableSimpleBroker("/topic","/queue");
     }
 }

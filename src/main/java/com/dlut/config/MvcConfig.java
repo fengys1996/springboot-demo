@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import javax.servlet.http.HttpServletRequest;
@@ -44,5 +45,12 @@ public class MvcConfig implements WebMvcConfigurer
 
         //或者使用下面这种方式进行配置
         //registry.addInterceptor(new LoginInterceptor()).addPathPatterns("/**");
+    }
+
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry)
+    {
+        registry.addViewController("/login").setViewName("/login");
+        registry.addViewController("/chat").setViewName("/chat");
     }
 }
