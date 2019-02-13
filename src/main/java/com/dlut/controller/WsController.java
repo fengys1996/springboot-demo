@@ -34,7 +34,7 @@ public class WsController
     /**
      *
      */
-    @MessageMapping("/chat")
+    @MessageMapping("/chats")
     public void handleChat(Principal principal,String msg)
     {
         if(principal.getName().equals("wyf"))
