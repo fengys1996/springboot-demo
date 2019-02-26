@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/direct")
 public class MqController
 {
     @Autowired
@@ -19,12 +20,5 @@ public class MqController
     public void send()
     {
         mqSender.send(msg);
-    }
-
-    @RequestMapping(value = "rece")
-    public void rece()
-    {
-        String msg = "";
-        mqRecevier.receive(msg);
     }
 }
