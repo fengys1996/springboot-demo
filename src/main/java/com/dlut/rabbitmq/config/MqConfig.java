@@ -1,9 +1,6 @@
 package com.dlut.rabbitmq.config;
 
-import org.springframework.amqp.core.Binding;
-import org.springframework.amqp.core.BindingBuilder;
-import org.springframework.amqp.core.Queue;
-import org.springframework.amqp.core.TopicExchange;
+import org.springframework.amqp.core.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -61,5 +58,31 @@ public class MqConfig
     {
         return BindingBuilder.bind(topicQueue2()).to(topicExchange()).with(ROUTING_KEY2);
     }
+
+    /**
+     * fanout
+     * 转发消息到所有绑定队列，消息广播的模式，不管路由键或者是路由模式，会把消息发给绑定给它的全部队列，如果配置了routing_key会被忽略。
+     */
+    public static final String FANOUT_EXCHANGE = "fanout_exchange";
+
+    @Bean
+    public FanoutExchange fanoutExchange()
+    {
+        return new FanoutExchange(FANOUT_EXCHANGE);
+    }
+
+    @Bean
+    public Binding fanoutBinding1()
+    {
+        return BindingBuilder.bind(topicQueue1()).to(fanoutExchange());
+    }
+
+    @Bean
+    public Binding fanoutBinding2()
+    {
+        return BindingBuilder.bind(topicQueue2()).to(fanoutExchange());
+    }
+
+
 
 }
