@@ -16,17 +16,17 @@ public class webSecurityConfig extends WebSecurityConfigurerAdapter
     @Override
     protected void configure(HttpSecurity http) throws Exception
     {
-        http.authorizeRequests()
-                .antMatchers("/","/login").permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .formLogin()
-                .loginPage("/login")
-                .defaultSuccessUrl("/chat")
-                .permitAll()
-                .and()
-                .logout()
-                .permitAll();
+//        http.authorizeRequests()
+//                .antMatchers("/","/login").permitAll()
+//                .anyRequest().authenticated()
+//                .and()
+//                .formLogin()
+//                .loginPage("/login")
+//                .defaultSuccessUrl("/chat")
+//                .permitAll()
+//                .and()
+//                .logout()
+//                .permitAll();
     }
 
     /**
@@ -35,10 +35,10 @@ public class webSecurityConfig extends WebSecurityConfigurerAdapter
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception
     {
-        auth.inMemoryAuthentication()
-                .withUser("wyf").password("wyf").roles("USER")
-                .and()
-                .withUser("wisely").password("wisely").roles("USER");
+//        auth.inMemoryAuthentication()
+//                .withUser("wyf").password("wyf").roles("USER")
+//                .and()
+//                .withUser("wisely").password("wisely").roles("USER");
     }
 
     /**

@@ -1,15 +1,13 @@
 package com.dlut.rabbitmq.header;
 
-import com.dlut.rabbitmq.config.MqConfig;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Service;
 
 @Service(value = "headerMqRecevier")
 @Slf4j
 public class MqRecevier
 {
-    @RabbitListener(queues = MqConfig.HEADR_QUEUE)
+    //@RabbitListener(queues = MqConfig.HEADR_QUEUE)
     public void rece(byte[] msgBytes)
     {
         String msg = new String(msgBytes);
