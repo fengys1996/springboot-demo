@@ -11,6 +11,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.ImportResource;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -22,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
  * 4.java -jar xx.jar --server.port=9090 来指定端口号
  */
 @RestController
+@EnableJpaRepositories("com.dlut")
 @SpringBootApplication(exclude={DataSourceAutoConfiguration.class})
 //查到资料说:@EnableConfigurationProperties在@SpringBootApplication里包括
 @EnableConfigurationProperties
