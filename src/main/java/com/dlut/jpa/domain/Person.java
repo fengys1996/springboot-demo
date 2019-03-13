@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Slf4j
-@NamedQuery(name = "Person.withNameAndAddressNamedQuery",query = "select p from p where p.nam=?1 and address = ?2")
+//@NamedQuery(name = "Person.withNameAndAddressNamedQuery",query = "select p from p where p.nam=?1 and address = ?2")
 public class Person
 {
     @Id

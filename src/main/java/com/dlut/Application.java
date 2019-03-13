@@ -7,14 +7,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.context.annotation.Import;
-import org.springframework.context.annotation.ImportResource;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 
 /**
  * 1.他会自动扫描同级包下面的Bean
@@ -24,7 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @RestController
 @EnableJpaRepositories("com.dlut")
-@SpringBootApplication(exclude={DataSourceAutoConfiguration.class})
+@SpringBootApplication
 //查到资料说:@EnableConfigurationProperties在@SpringBootApplication里包括
 @EnableConfigurationProperties
 /**
