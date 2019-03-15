@@ -1,6 +1,7 @@
 package com.dlut;
 
 import com.dlut.config.BookSettings;
+import com.dlut.jpa.config.MyRepositoryRestMvcConfiguration;
 import com.dlut.services.HelloService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -8,7 +9,9 @@ import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.Import;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,6 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 //查到资料说:@EnableConfigurationProperties在@SpringBootApplication里包括
 @EnableConfigurationProperties
+//@Import(MyRepositoryRestMvcConfiguration.class)
 /**
  * 此处由于xml文件未编写,所以会导致错误
  */
