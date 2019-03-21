@@ -2,11 +2,11 @@ package com.dlut.jpa.controller;
 
 import com.dlut.jpa.domain.Person;
 import com.dlut.jpa.repository.PersonRepository;
+import com.dlut.jpa.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -55,5 +55,16 @@ public class DataController
     {
         Page<Person> pagePeople = personRepository.findAll(new PageRequest(1,2));
         return pagePeople;
+    }
+
+    @Autowired
+    PersonService personService;
+
+    @RequestMapping("/findOnePerson")
+    public Person findOnePerson()
+    {
+        Person p = new Person();
+        p.setId(Long.valueOf(1));
+        return personService.findOne(p);
     }
 }

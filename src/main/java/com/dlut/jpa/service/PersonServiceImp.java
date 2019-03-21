@@ -13,45 +13,32 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class PersonServiceImp implements PersonService
-{
+public class PersonServiceImp implements PersonService {
     @Autowired
     PersonRepository personRepository;
 
 
     @Override
-    @CachePut(value = "people" , key = "#person.id")
-    public Person save(Person person)
-    {
+    @CachePut(value = "people", key = "#person.id")
+    public Person save(Person person) {
         Person p = personRepository.save(person);
         return p;
     }
 
     @Override
     @CacheEvict(value = "people")
-    public void remove(Person person)
-    {
+    public void remove(Person person) {
         personRepository.delete(person);
     }
 
     @Override
-    @Cacheable(value = "people" , key = "#person.id")
-    public Person findOne(Person person)
-    {
-        Optional<Person> p = personRepository.findOne(new Example<Person>()
-        {
-            @Override
-            public Person getProbe()
-            {
-                return null;
-            }
+    @Cacheable(value = "people", key = "#person.id")
+    public Person findOne(Person person) {
+        ExampleMatcher matcher = ExampleMatcher.matching().
+                withMatcher("id", ExampleMatcher.GenericPropertyMatchers.startsWith()).withIgnorePaths("focus");
+        Example<Person> ex = Example.of(person, matcher);
 
-            @Override
-            public ExampleMatcher getMatcher()
-            {
-                return null;
-            }
-        });
-        return null;
+        Optional<Person> p = personRepository.findOne(ex);
+        return p.get();
     }
 }
