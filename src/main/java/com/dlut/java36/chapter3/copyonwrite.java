@@ -15,6 +15,11 @@ public class copyonwrite
      *     a = b;
      * }
      */
+    copyonwrite()
+    {
+        a = new int[2];
+    }
+
     copyonwrite(int b[])
     {
         a = b.clone();
