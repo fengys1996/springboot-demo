@@ -27,4 +27,45 @@ public class TestClass
         }
     }
 
+    @RequestMapping("addprint")
+    public void addprint(String name)
+    {
+    }
+
+    /**
+     * 该示例演示了ThreadLocal的线程安全
+     */
+    public final static ThreadLocal<String> tl = new ThreadLocal<>();
+
+    public static class MyThread extends Thread
+    {
+
+        public String name;
+
+        MyThread(String name)
+        {
+            this.name = name;
+        }
+
+
+        @Override
+        public void run() {
+            tl.set(name);
+            System.out.println(name + "has set value");
+            try {
+                sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println(name + ":" + tl.get());
+        }
+    }
+
+    public static void main(String[] args) {
+        for (int i = 0 ; i<5 ; i++ )
+        {
+            new TestClass.MyThread("" + i).start();
+        }
+    }
+
 }
