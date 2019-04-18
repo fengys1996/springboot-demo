@@ -25,4 +25,10 @@ public class CleaningExample implements AutoCloseable
     {
 
     }
+
+    public static void main(String[] args)
+    {
+        String s = "12";
+        System.out.println(s == "12");
+    }
 }
